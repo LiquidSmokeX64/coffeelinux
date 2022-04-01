@@ -7,6 +7,7 @@ Note: You will need to edit these scripts for your system slightly.
 
 Note-2: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL fail because absolutely no AMD packages are installed.
 
+Note-3: VAAPI-Chrome files are placed in /VAAPI-Chrome folder.
 Instructions are as follows: 
 
 1: Boot the Arch Linux ISO in UEFI mode.
@@ -57,10 +58,14 @@ Instructions are as follows:
 
 24: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage2.sh
 
-23: When the nano page appears after awhile, scroll down with arrow keys and remove the "#" from in front of the %wheel ALL=(ALL) ALL part, Ctrl+S,Ctrl+X to save and exit.
+25: When the nano page appears after awhile, scroll down with arrow keys and remove the "#" from in front of the %wheel ALL=(ALL) ALL part, Ctrl+S,Ctrl+X to save and exit.
 
-24: After Stage 2 finishes, enter: exit
+26: After Stage 2 finishes, enter: exit
 
-25: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage3.sh
+27: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage3.sh
 
-That should finish it off and reboot for you. Enjoy your new Arch Linux
+28: After first login, Enter: cd /
+
+29: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage4.sh
+
+That should finish it off for you. Enjoy your new Arch Linux

@@ -59,7 +59,7 @@ Instructions are as follows:
 
 23: When the nano page appears after awhile, scroll down with arrow keys and remove the "#" from in front of the %wheel ALL=(ALL) ALL part, Ctrl+S,Ctrl+X to save and exit.
 
-24: after Stage 2 finishes, enter: exit
+24: After Stage 2 finishes, enter: exit
 
 25: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage3.sh
 

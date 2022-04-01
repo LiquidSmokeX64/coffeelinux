@@ -1,7 +1,7 @@
 # arch-linux-installer
 [Description]
 
-A set of scripts designed to install Arch Linux with Gnome Desktop easily, and semi painlessly.
+A set of scripts designed to install Arch Linux easily, and semi painlessly.
 
 Note: You will need to edit these scripts for your system slightly. 
 
@@ -17,17 +17,17 @@ Instructions are as follows:
 
 4: Enter: git clone https://liquidsmokex64/arch-linux-installer.git
 
-5: Enter: chmod a+x /arch-linux-installer/arch-install_intel_nvidia_x86_64_stage1.sh
+5: Enter: chmod a+x /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage1.sh
 
-6: Enter: nano /arch-linux-installer/arch-install_intel_nvidia_x86_64_stage1.sh
+6: Enter: nano /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage1.sh
 
 7: Edit the "/dev/nvme.." parts to your desired hard drive partition ids, change "arch-pc" to your OS Drive name of choice (you will need to remember it for stage 2).
 
-8: Enter: nano /arch-linux-installer/arch-install_intel_nvidia_x86_64_stage2.sh
+8: Enter: nano /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage2.sh
 
-9: Edit "arch-box" to whatever you want the PC name to be. Change "archuser" to your username, change "usernamehere" to your username as well.
+9: Edit "arch-box" to whatever you want the PC name to be. Change "archuser" to your username as well.
 
-10: Enter: bash /arch-linux-installer/arch-install_intel_nvidia_x86_64_stage1.sh
+10: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage1.sh
 
 11: Enter: g
 
@@ -53,10 +53,14 @@ Instructions are as follows:
 
 22: Enter: w
 
-23: When s nano page appears after awhile, scroll down with arrow keys and remove the "#" from in front of the %wheel ALL=(ALL) ALL part, Ctrl+S,Ctrl+X to save and exit.
+23: Enter: arch-chroot /mnt
 
-24: After stage 2 finishes it should exit automatically.
+24: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage2.sh
 
-25: Enter: bash /arch-linux-installer/arch-install_intel_nvidia_x86_64_stage3.sh
+23: When the nano page appears after awhile, scroll down with arrow keys and remove the "#" from in front of the %wheel ALL=(ALL) ALL part, Ctrl+S,Ctrl+X to save and exit.
 
-That should finish it off and reboot for you. Enjoy your new Arch Linux (Gnome)
+24: after Stage 2 finishes, enter: exit
+
+25: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage3.sh
+
+That should finish it off and reboot for you. Enjoy your new Arch Linux

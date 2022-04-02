@@ -7,7 +7,7 @@ Note: You will need to edit these scripts for your system slightly.
 
 Note-2: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL fail because absolutely no AMD packages are installed.
 
-Note-3: VAAPI-Chrome files are placed in /VAAPI-Chrome folder.
+Note-3: VAAPI-Chrome files are placed in /VAAPI-Chrome folder. I also re-enable VP9 support on Nvidia Cards and enable Pipewire.
 Instructions are as follows: 
 
 1: Boot the Arch Linux ISO in UEFI mode.
@@ -50,7 +50,7 @@ Instructions are as follows:
 
 20: Enter: t
 
-21: Enter: 1 then 19
+21: Enter: 2 then 19
 
 22: Enter: w
 

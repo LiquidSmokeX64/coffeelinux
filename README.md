@@ -8,7 +8,10 @@ Note: You will need to edit these scripts for your system slightly.
 Note-2: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL fail because absolutely no AMD packages are installed.
 
 Note-3: VAAPI-Chrome files are placed in /VAAPI-Chrome folder. I also re-enable VP9 support on Nvidia Cards and enable Pipewire.
-Instructions are as follows: 
+
+Note-4: Ctrl+S will save while using nano editor, Ctrl+x will exit.
+
+Instructions are as follows: For most things you just answer yes to if asked as I have already prepared everything in a certain order for your convenience.
 
 1: Boot the Arch Linux ISO in UEFI mode.
 
@@ -22,11 +25,11 @@ Instructions are as follows:
 
 6: Enter: nano /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage1.sh
 
-7: Edit the "/dev/nvme.." parts to your desired hard drive partition ids, change "arch-pc" to your OS Drive name of choice (you will need to remember it for stage 2).
+7: Edit the "/dev/nvme1n1pX.." parts to your desired hard drive partition ids (do not change the partition number though. You need the 3 in a specific order for the installation to succeed ie: nvme1n1p2 = partition 2 and so on, then change "arch-pc" to your OS Drive name of choice (you will need to remember it for stage 2).
 
 8: Enter: nano /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage2.sh
 
-9: Edit "arch-box" to whatever you want the PC name to be. Change "archuser" to your username as well.
+9: Edit "arch-box" to whatever you want the PC name to be in 2 places. Change "archuser" to your username as well in 2 places. Save and exit
 
 10: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage1.sh
 

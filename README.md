@@ -25,7 +25,7 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 6: Enter: nano /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage1.sh
 
-7: Edit the "/dev/nvme1n1pX.." parts to your desired hard drive partition ids (do not change the partition number though. You need the 3 in a specific order for the installation to succeed ie: nvme1n1p2 = partition 2 and so on, then change "arch-pc" to your OS Drive name of choice (you will need to remember it for stage 2).
+7: Edit the "/dev/nvme1n1pX.." parts to your desired hard drive partition ids (do not change the partition number though. You need the 3 in a specific order for the installation to succeed ie: nvme1n1p2 = partition 2 = Linux Swap and so on, then change "arch-pc" to your OS Drive name of choice (you will need to remember it for stage 2).
 
 8: Enter: nano /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage2.sh
 

@@ -35,44 +35,44 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 11: Edit "archuser" to your username in 2 places. Save and exit.
 
-10: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage1.sh
+12: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage1.sh
 
-11: Enter: g
-
-12: Enter: n
-
-13: Enter: [enter] twice, +1G
+13: Enter: g
 
 14: Enter: n
 
-15: Enter: [enter] twice, +16G (you can add more here but its up to you)
+15: Enter: [enter] twice, +1G
 
 16: Enter: n
 
-17: Enter: [enter] 3x times
+17: Enter: [enter] twice, +16G (you can add more here but its up to you)
 
-18: Enter: t
+18: Enter: n
 
-19: Enter: 1 then 1 again
+19: Enter: [enter] 3x times
 
 20: Enter: t
 
-21: Enter: 2 then 19
+21: Enter: 1 then 1 again
 
-22: Enter: w
+22: Enter: t
 
-23: Enter: arch-chroot /mnt
+23: Enter: 2 then 19
 
-24: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage2.sh
+24: Enter: w
 
-25: When the nano page appears after awhile, scroll down with arrow keys and remove the "#" from in front of the %wheel ALL=(ALL) ALL part, Ctrl+S,Ctrl+X to save and exit.
+25: Enter: arch-chroot /mnt
 
-26: After Stage 2 finishes, enter: exit
+26: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage2.sh
 
-27: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage3.sh
+27: When the nano page appears after awhile, scroll down with arrow keys and remove the "#" from in front of the %wheel ALL=(ALL) ALL part, Ctrl+S,Ctrl+X to save and exit.
 
-28: After first login, Enter: cd /
+28: After Stage 2 finishes, enter: exit
 
-29: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage4.sh
+29: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage3.sh
+
+30: After first login, Enter: cd /
+
+31: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage4.sh
 
 That should finish it off for you. Enjoy your new Arch Linux

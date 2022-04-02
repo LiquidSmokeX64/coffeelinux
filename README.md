@@ -31,6 +31,10 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 9: Edit "arch-box" to whatever you want the PC name to be in 2 places. Change "archuser" to your username as well in 2 places. Change "arch-pc" to the name you chose in the stage 1 script. Save and exit
 
+10: Enter: nano /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage4.sh
+
+11: Edit "archuser" to your username in 2 places. Save and exit.
+
 10: Enter: bash /arch-linux-installer/arch-install_xyz_intel_nvidia_x86_64_stage1.sh
 
 11: Enter: g

@@ -8,7 +8,7 @@ This Installer will create an Arch-Linux install that is a little different than
 Features: 
 1. Pure Arch foundation using official repos (and a little AUR)
 2. Cinnamon Desktop Environment. (Always the latest version)
-3. GDM with Mutter Window Manager. (As opposed to the typical LightDM with Muffin WM).
+3. [Reverted to LightDM] GDM with Mutter Window Manager. (As opposed to the typical LightDM with Muffin WM).
 4. Linux Mint Themes, Icons, and Backgrounds (In part 4).
 5. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 6. Chromium Preinstalled (not Firefox)

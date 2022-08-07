@@ -25,11 +25,6 @@ echo 'Installing Desktop Environment' &&
 pacstrap /mnt sudo nano gtk4 cinnamon gdm gnome-terminal gedit gnome-system-monitor gnome-keyring cinnamon-translations && 
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab && 
-echo 'Copying scripts to system root' && 
-cp arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage2.sh /mnt && 
-chmod a+x arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage3.sh && 
-chmod a+x /mnt/arch-install_cinnamon_intel_nvidia_x86_64_stage2.sh && 
-
 arch-chroot /mnt echo 'Setting Locale' && 
 arch-chroot /mnt ln -sf ../usr/share/zoneinfo/America/Los_Angeles /etc/localtime && 
 arch-chroot /mnt hwclock --systohc && 
@@ -102,4 +97,12 @@ arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y 
 arch-chroot /mnt sudo -u user01 yay --answerclean y  --answerdiff y --answeredit y --answerupgrade y --nodiffmenu --noremovemake gnome-calendar-linuxmint && 
 arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-browser-connector && 
 arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y xboxdrv && 
-./mnt/arch-install_cinnamon_intel_nvidia_x86_64_stage3.sh
+echo 'Cleaning up' && 
+rm /mnt/arch-install_cinnamon_intel_nvidia_x86_64_stage2.sh && 
+mkdir /mnt/VAAPI-Chrome && 
+cp arch-linux-installer/chrome-flags.conf /mnt/VAAPI-Chrome/chrome-flags.conf && 
+chmod a+x /mnt/VAAPI-Chrome/chrome-flags.conf && 
+cp arch-linux-installer/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/VAAPI-Chrome/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop && 
+chmod a+x /mnt/VAAPI-Chrome/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop && 
+umount -R /mnt && 
+reboot

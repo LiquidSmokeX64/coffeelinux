@@ -53,7 +53,7 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 6: Enter: nano /arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage1.sh
 
-7: Edit the "/dev/nvme1n1pX.." parts to your desired hard drive partition ids (do not change the partition number though. You need the 3 in a specific order for the installation to succeed ie: nvme1n1p2 = partition 2 = Linux Swap and so on, then change "LocalDisk" to your OS Drive name of choice (you will need to remember it for stage 2).
+7: Edit the "/dev/nvme1n1pX.." parts to your desired hard drive partition ids (do not change the partition number though. You need the 3 in a specific order for the installation to succeed ie: nvme1n1p2 = partition 2 = Linux Swap and so on, then change "LocalDisk" to your OS Drive name of choice.
 
 8: Enter: nano /arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage2.sh
 
@@ -89,18 +89,4 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 24: Enter: w
 
-25: Enter: arch-chroot /mnt
-
-26: Enter: bash /arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage2.sh
-
-27: [Step-Removed]
-
-28: After Stage 2 finishes, when prompted, enter: exit
-
-29: Enter: ./arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage3.sh
-
-30: [Step-Removed]
-
-31: [Step-Removed]
-
-That should finish it off for you. Enjoy your new DaxiLinux
+That should finish it off for you. Enjoy your new Linux Mint "Alpine"

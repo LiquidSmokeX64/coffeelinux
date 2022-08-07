@@ -13,8 +13,8 @@ echo 'Linux-Mint-PC' > /etc/hostname &&
 echo '127.0.0.1 localhost' >> /etc/hosts && 
 echo '::1 localhost' >> /etc/hosts && 
 echo '127.0.1.1 Linux-Mint-PC' >> /etc/hosts && 
-echo '[multilib] >> /etc/pacman.conf' && 
-echo 'Include = /etc/pacman.d/mirrorlist >> /etc/pacman.conf' && 
+echo '[multilib]' >> /etc/pacman.conf && 
+echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf && 
 pacman -Syy && 
 echo 'Set Root Password' && 
 passwd && 
@@ -34,14 +34,11 @@ echo 'title Linux Mint "Alpine"' > /boot/loader/entries/arch.conf &&
 echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf && 
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
 echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf && 
-echo 'options root="LABEL=LocalDisk"' rw nvidia-drm.modeset=1 >> /boot/loader/entries/arch.conf && 
+echo 'options root="LABEL=LocalDisk" rw nvidia-drm.modeset=1' >> /boot/loader/entries/arch.conf && 
 echo 'Installing Drivers and dependencies' && 
 pacman -Sy archlinux-keyring &&
-pacman -Sy xorg xorg-server xorg-apps virtualbox-guest-utils xf86-video-vmware nvidia nvidia-utils nvidia-settings git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-gamemode lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src chromium steam-native-runtime gamemode gamescope wine-mono wine-gecko lib32-opencl-nvidia zenity lutris discord steam gnome-menus polkit-gnome gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld && 
-echo 'Installing the "Alpine" Experience Pack' &&
-pacman -Sy shotwell virtualbox gimp blender cura ark barrier gnome-calculator gnome-characters file-roller gnome-firmware font-manager gnome-font-viewer fragments gnome-tweaks gvim yelp gnome-logs alacarte gnome-maps gnome-nettool nextcloud-client nitrogen notepadqq gnome-notes owncloud-client seahorse peek piper gnome-recipes redshift gnome-screenshot solaar warpinator gnome-weather gnome-contacts geary gnome-dictionary gnome-latex libreoffice-fresh links evince gnome-books tellico audacity blanket brasero clementine easyeffects easytag elisa gnac gnome-mplayer gmtp gnome-subtitles helvum gnome-music gnome-podcasts sound-juicer gnome-sound-recorder akregator cozy-desktop electrum etherwall gfeeds hexchat transmission-gtk aisleriot atomix chromium-bsu dolphin-emu endless-sky fceux five-or-more four-in-a-row gnome-games gnome-chess hitori gnome-klotski gnome-mahjongg gnome-mines gnome-nibbles iagno gnome-robots persepolis pidgin qopenvpn remmina gnome-sudoku gnome-taquin gnome-tetravex granatier hatari hedgewars kajongg kanagram kapman katomic kblackbox kblocks kbounce kbreakout kdiamond khangman kigo kiriki klickety knetwalk kolf kollision klines konquest kubrick lightsoff lincity-ng lbreakout2 ltris mame minetest pcsx2 pychess pysolfc retroarch snes9x-gtk supertux supertuxkart swell-foop tali xonotic celluloid cheese ciano gcolor3 darktable digikam simple-scan freecad goxel gthumb handbrake eog mypaint okular pencil2d gnome-photos pinta qtqr totem accerciser arduino bless bluefish gnome-boxes gnome-builder cmake code devhelp d-feet pcb geany ghex glade godot lokalize meld telegram-desktop && 
-archlinux-java set java-18-openjdk  && 
-echo 'Setting default systemd services' && 
+pacman -Sy xorg xorg-server xorg-apps virtualbox-guest-utils xf86-video-vmware nvidia nvidia-utils nvidia-settings git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-gamemode lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src chromium steam-native-runtime gamemode gamescope wine-mono wine-gecko lib32-opencl-nvidia zenity lutris discord steam gnome-menus polkit-gnome gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell virtualbox gimp blender cura ark barrier gnome-calculator gnome-characters file-roller gnome-firmware font-manager gnome-font-viewer fragments gnome-tweaks gvim yelp gnome-logs alacarte gnome-maps gnome-nettool nextcloud-client nitrogen notepadqq gnome-notes owncloud-client seahorse peek piper gnome-recipes redshift gnome-screenshot solaar warpinator gnome-weather gnome-contacts geary gnome-dictionary gnome-latex libreoffice-fresh links evince gnome-books tellico audacity blanket brasero clementine easyeffects easytag elisa gnac gnome-mplayer gmtp gnome-subtitles helvum gnome-music gnome-podcasts sound-juicer gnome-sound-recorder akregator cozy-desktop electrum etherwall gfeeds hexchat transmission-gtk aisleriot atomix chromium-bsu dolphin-emu endless-sky fceux five-or-more four-in-a-row gnome-games gnome-chess hitori gnome-klotski gnome-mahjongg gnome-mines gnome-nibbles iagno gnome-robots persepolis pidgin qopenvpn remmina gnome-sudoku gnome-taquin gnome-tetravex granatier hatari hedgewars kajongg kanagram kapman katomic kblackbox kblocks kbounce kbreakout kdiamond khangman kigo kiriki klickety knetwalk kolf kollision klines konquest kubrick lightsoff lincity-ng lbreakout2 ltris mame minetest pcsx2 pychess pysolfc retroarch snes9x-gtk supertux supertuxkart swell-foop tali xonotic celluloid cheese ciano gcolor3 darktable digikam simple-scan freecad goxel gthumb handbrake eog mypaint okular pencil2d gnome-photos pinta qtqr totem accerciser arduino bless bluefish gnome-boxes gnome-builder cmake code devhelp d-feet pcb geany ghex glade godot lokalize meld telegram-desktop && 
+archlinux-java set java-18-openjdk  &&  
 systemctl enable gdm && 
 systemctl enable dhcpcd && 
 systemctl enable NetworkManager && 
@@ -51,10 +48,10 @@ echo 'Ensuring Home Directory is intact' &&
 pacman -Sy xdg-user-dirs &&   
 xdg-user-dirs-update && 
 echo 'Attempting to install Linux Mint Flavor/s automatically now...' && 
-sudo -u user01 git clone https://aur.archlinux.org/yay.git && 
+git clone https://aur.archlinux.org/yay.git && 
 sudo -u user01 chown -R user01:users ./yay && 
 sudo -u user01 id user01 && 
-sudo -u user01 cd yay && 
+cd yay && 
 sudo -u user01 makepkg -si && 
 cd && 
 sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
@@ -69,11 +66,8 @@ sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y -
 sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev && 
 sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mintlocale && 
 sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork && 
-sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork-cinnamon 
-&& 
-sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring 
-&& 
+sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork-cinnamon && 
+sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring && 
 sudo -u user01 yay --answerclean y  --answerdiff y --answeredit y --answerupgrade y --nodiffmenu --noremovemake gnome-calendar-linuxmint && 
 sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-browser-connector && 
-sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y xboxdrv &&  
-echo 'Please type exit and run the next script'
+sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y xboxdrv

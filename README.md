@@ -29,15 +29,11 @@ Features:
 19. Many Development geared applications.
 20. And a handfull of carfully selected additional applications just for fun, and exploration of new things.
 
+Note: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL LIKELY fail because absolutely no AMD specific packages are installed.
 
+Note-2: VAAPI-Chrome files are placed in /VAAPI-Chrome folder.
 
-Note: You will need to create a new user on first login, and add it to all groups except root, nobody, and nogroup, then relogin with it (Cinnamon Session). 
-
-Note-2: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL LIKELY fail because absolutely no AMD specific packages are installed.
-
-Note-3: VAAPI-Chrome files are placed in /VAAPI-Chrome folder.
-
-Note-4: Ctrl+S will save while using nano editor, Ctrl+x will exit.
+Note-3: Ctrl+S will save while using nano editor, Ctrl+x will exit.
 
 Instructions are as follows: For most things you just answer yes to if asked as I have already prepared everything in a certain order for your convenience.
 
@@ -55,38 +51,30 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 7: Edit the "/dev/nvme1n1pX.." parts to your desired hard drive partition ids (do not change the partition number though. You need the 3 in a specific order for the installation to succeed ie: nvme1n1p2 = partition 2 = Linux Swap and so on, then change "LocalDisk" to your OS Drive name of choice.
 
-8: Enter: nano /arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage2.sh
+8: Enter: ./arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage1.sh
 
-9: Edit "LinuxMint-PC" to whatever you want the PC name to be in 2 places. Change "user01" to your username as well in nedded places. Save and exit
+9: Enter: g
 
-10: [step removed]
+10: Enter: n
 
-11: Edit "user01" to your username in several places. Save and exit.
+11: Enter: [enter] twice, +1G
 
-12: Enter: ./arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage1.sh
+12: Enter: n
 
-13: Enter: g
+13: Enter: [enter] twice, +16G (you can add more here but its up to you)
 
 14: Enter: n
 
-15: Enter: [enter] twice, +1G
+15: Enter: [enter] 3x times
 
-16: Enter: n
+16: Enter: t
 
-17: Enter: [enter] twice, +16G (you can add more here but its up to you)
+17: Enter: 1 then 1 again
 
-18: Enter: n
+18: Enter: t
 
-19: Enter: [enter] 3x times
+19: Enter: 2 then 19
 
-20: Enter: t
-
-21: Enter: 1 then 1 again
-
-22: Enter: t
-
-23: Enter: 2 then 19
-
-24: Enter: w
+20: Enter: w
 
 That should finish it off for you. Enjoy your new Linux Mint "Alpine"

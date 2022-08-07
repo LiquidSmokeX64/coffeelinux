@@ -98,7 +98,6 @@ arch-chroot /mnt sudo -u user01 yay --answerclean y  --answerdiff y --answeredit
 arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-browser-connector && 
 arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y xboxdrv && 
 echo 'Cleaning up' && 
-rm /mnt/arch-install_cinnamon_intel_nvidia_x86_64_stage2.sh && 
 mkdir /mnt/VAAPI-Chrome && 
 cp arch-linux-installer/chrome-flags.conf /mnt/VAAPI-Chrome/chrome-flags.conf && 
 chmod a+x /mnt/VAAPI-Chrome/chrome-flags.conf && 

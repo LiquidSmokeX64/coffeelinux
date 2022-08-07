@@ -29,5 +29,5 @@ echo 'Copying scripts to system root' &&
 cp arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage2.sh /mnt && 
 chmod a+x arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage3.sh && 
 chmod a+x /mnt/arch-install_cinnamon_intel_nvidia_x86_64_stage2.sh && 
-arch-chroot ./mnt/arch-install_cinnamon_intel_nvidia_x86_64_stage2.sh && 
+arch-chroot /mnt/arch-install_cinnamon_intel_nvidia_x86_64_stage2.sh && 
 ./mnt/arch-install_cinnamon_intel_nvidia_x86_64_stage3.sh

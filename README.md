@@ -1,7 +1,7 @@
 # Linux Mint "Alpine" (Unofficial Arch-Based, Script-Installed Distro for Gamers)
 [Description]
 
-A set of scripts designed to install a unique Linux Mint Experience via Arch Linux easily, and semi painlessly.
+A script designed to install a unique Linux Mint Experience via Arch Linux easily, and semi painlessly.
 
 [This is unffocial currently, and has no actual affiliation with Arch Linux or Linux Mint. Ours is slightly different in a few ways]
 

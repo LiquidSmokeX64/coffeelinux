@@ -45,36 +45,30 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 4: Enter: git clone https://liquidsmokex64/arch-linux-installer.git
 
-5: Enter: chmod a+x /arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage1.sh
+6: Enter: bash /arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage1.sh
 
-6: Enter: nano /arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage1.sh
+7: Enter: g
 
-7: Edit the "/dev/nvme1n1pX.." parts to your desired hard drive partition ids (do not change the partition number though. You need the 3 in a specific order for the installation to succeed ie: nvme1n1p2 = partition 2 = Linux Swap and so on, then change "LocalDisk" to your OS Drive name of choice.
+8: Enter: n
 
-8: Enter: ./arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage1.sh
-
-9: Enter: g
+9: Enter: [enter] twice, +1G
 
 10: Enter: n
 
-11: Enter: [enter] twice, +1G
+11: Enter: [enter] twice, +16G (you can add more here but its up to you)
 
 12: Enter: n
 
-13: Enter: [enter] twice, +16G (you can add more here but its up to you)
+13: Enter: [enter] 3x times
 
-14: Enter: n
+14: Enter: t
 
-15: Enter: [enter] 3x times
+15: Enter: 1 then 1 again
 
 16: Enter: t
 
-17: Enter: 1 then 1 again
+17: Enter: 2 then 19
 
-18: Enter: t
-
-19: Enter: 2 then 19
-
-20: Enter: w
+18: Enter: w
 
 That should finish it off for you. Enjoy your new Linux Mint "Alpine"

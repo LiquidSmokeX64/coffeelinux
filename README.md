@@ -10,17 +10,14 @@ This Installer will create an Arch-Linux install that is a little different than
 Features: 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
 2. Cinnamon Desktop Environment. (Always the latest version)
-3. GDM with Mutter Window Manager. (As opposed to the typical LightDM with Muffin WM).
 4. Linux Mint Themes, Sounds, Icons, and Backgrounds.
 5. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 6. Chromium Preinstalled (not Firefox)
-7. Hardware Accelerated VP9 & H.264 in Chromium (with the provided config file / flags)
 8. Latest Pipewire for the best possible sound.
 9. Many gaming frameworks preinstalled so you can get to it right away.
 10. Prebuilt with Steam (Native), Lutris, Wine, Winetricks, Protontricks, and DXVK for the best possible gaming experiences out of the box.
 11. SystemD boot (as opposed to GRUB)
 12. Many useful applications preinstalled (Games,Utilities,etc), and some just to have a bit of everything.
-13. No flatpack, or snapd by default.
 14. Yay for CLI installation of AUR applications.
 15. Emulators galore, including Virtual Machine applications.
 16. LibreOffice among other office type applications.
@@ -30,8 +27,6 @@ Features:
 20. And a handfull of carfully selected additional applications just for fun, and exploration of new things.
 
 Note: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL LIKELY fail because absolutely no AMD specific packages are installed.
-
-Note-2: VAAPI-Chrome files are placed in /VAAPI-Chrome folder.
 
 Note-3: You will have to use fdisk to prepare your drive during installation.
 

@@ -33,7 +33,7 @@ Note: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD insta
 
 Note-2: VAAPI-Chrome files are placed in /VAAPI-Chrome folder.
 
-Note-3: Ctrl+S will save while using nano editor, Ctrl+x will exit.
+Note-3: You will have to use fdisk to prepare your drive during installation.
 
 Instructions are as follows: For most things you just answer yes to if asked as I have already prepared everything in a certain order for your convenience.
 

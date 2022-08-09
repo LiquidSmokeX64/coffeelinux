@@ -26,6 +26,8 @@ Features:
 19. Many Development geared applications.
 20. And a handfull of carfully selected additional applications just for fun, and exploration of new things.
 
+Key Features: Arch-Based, BTRFS installation, Pipewire, GDM/Mutter, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
+
 Note: This is designed for PCs with UEFI, Intel CPUs, and Nvidia GPUs, AMD install WILL LIKELY fail because absolutely no AMD specific packages are installed.
 
 Note-3: You will have to use fdisk to prepare your drive during installation.

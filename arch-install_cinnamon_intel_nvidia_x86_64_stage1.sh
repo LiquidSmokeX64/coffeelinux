@@ -8,6 +8,10 @@ echo '[testing]' >> /etc/pacman.conf &&
 echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf &&
 echo '[multilib-testing]' >> /etc/pacman.conf && 
 echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf &&
+echo '[community-testing]' >> /etc/pacman.conf && 
+echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf && 
+echo '[community]' >> /etc/pacman.conf && 
+echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf && 
 pacman -Sy && 
 pacman -Sy --noconfirm archlinux-keyring && 
 echo 'Partition the Disk' && 
@@ -25,6 +29,7 @@ echo 'Installing Kernel Frameworks' &&
 pacman -Syy && 
 pacman -Sy --noconfirm archlinux-keyring && 
 pacstrap /mnt base linux linux-firmware intel-ucode btrfs-progs net-tools networkmanager dhcpcd iwd vim man-pages man-db texinfo base-devel intel-ucode && 
+pacstrap /mnt sudo nano cinnamon lightdm gnome-terminal gedit gnome-system-monitor gnome-keyring cinnamon-translations && 
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
@@ -43,10 +48,14 @@ arch-chroot /mnt echo '[testing]' >> /mnt/etc/pacman.conf &&
 arch-chroot /mnt echo 'Include = /etc/pacman.d/mirrorlist' >> /mnt/etc/pacman.conf &&
 arch-chroot /mnt echo '[multilib-testing]' >> /mnt/etc/pacman.conf && 
 arch-chroot /mnt echo 'Include = /etc/pacman.d/mirrorlist' >> /mnt/etc/pacman.conf &&
+arch-chroot /mnt echo '[community-testing]' >> /mnt/etc/pacman.conf && 
+arch-chroot /mnt echo 'Include = /etc/pacman.d/mirrorlist' >> /mnt/etc/pacman.conf && 
+arch-chroot /mnt echo '[community]' >> /mnt/etc/pacman.conf && 
+arch-chroot /mnt echo 'Include = /etc/pacman.d/mirrorlist' >> /mnt/etc/pacman.conf && 
 arch-chroot /mnt pacman -Syy && 
-arch-chroot /mnt pacman -Sy gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad xed xreader vlc pulseaudio archlinux-wallpaper qt6 udev dbus cpupower &&
-arch-chroot /mnt pacman -Sy sudo nano gtk4 cinnamon gdm gnome-terminal gedit gnome-system-monitor gnome-keyring cinnamon-translations &&
-arch-chroot /mnt pacman -Sy go meson xorg xorg-server xorg-apps virtualbox-guest-utils xf86-video-vmware nvidia nvidia-utils nvidia-settings git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-gamemode lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src chromium steam-native-runtime gamemode gamescope wine-mono wine-gecko lib32-opencl-nvidia zenity lutris discord steam gnome-menus polkit-gnome gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell virtualbox gimp blender cura ark barrier gnome-calculator gnome-characters file-roller gnome-firmware font-manager gnome-font-viewer fragments gnome-tweaks gvim yelp gnome-logs alacarte gnome-maps gnome-nettool nextcloud-client nitrogen notepadqq gnome-notes owncloud-client seahorse peek piper gnome-recipes redshift gnome-screenshot solaar warpinator gnome-weather gnome-contacts geary gnome-dictionary gnome-latex libreoffice-fresh links evince gnome-books tellico audacity blanket brasero clementine easyeffects easytag elisa gnac gnome-mplayer gmtp gnome-subtitles helvum gnome-music gnome-podcasts sound-juicer gnome-sound-recorder akregator cozy-desktop electrum etherwall gfeeds hexchat transmission-gtk aisleriot atomix chromium-bsu dolphin-emu endless-sky fceux five-or-more four-in-a-row gnome-games gnome-chess hitori gnome-klotski gnome-mahjongg gnome-mines gnome-nibbles iagno gnome-robots persepolis pidgin qopenvpn remmina gnome-sudoku gnome-taquin gnome-tetravex granatier hatari hedgewars kajongg kanagram kapman katomic kblackbox kblocks kbounce kbreakout kdiamond khangman kigo kiriki klickety knetwalk kolf kollision klines konquest kubrick lightsoff lincity-ng lbreakout2 ltris mame minetest pcsx2 pychess pysolfc retroarch snes9x-gtk supertux supertuxkart swell-foop tali xonotic celluloid cheese ciano gcolor3 darktable digikam simple-scan freecad goxel gthumb handbrake eog mypaint okular pencil2d gnome-photos pinta qtqr totem accerciser arduino bless bluefish gnome-boxes gnome-builder cmake code devhelp d-feet pcb geany ghex glade godot lokalize meld telegram-desktop && 
+arch-chroot /mnt pacman -Sy lightdm lightdm-slick-greeter gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad xed xreader vlc pulseaudio archlinux-wallpaper udev dbus &&
+arch-chroot /mnt pacman -Sy  &&
+arch-chroot /mnt pacman -Sy go meson xorg xorg-server xorg-apps virtualbox-guest-utils xf86-video-vmware nvidia nvidia-utils nvidia-settings git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-gamemode lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src chromium steam-native-runtime gamemode gamescope wine-mono wine-gecko lib32-opencl-nvidia zenity lutris discord steam gnome-menus polkit-gnome gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell virtualbox gimp blender cura gnome-calculator gnome-characters file-roller gnome-firmware font-manager gnome-font-viewer fragments gnome-tweaks gvim yelp gnome-logs alacarte gnome-maps gnome-nettool gnome-notes gnome-recipes gnome-screenshot gnome-weather gnome-contacts geary gnome-dictionary gnome-latex libreoffice-fresh gnome-music gnome-podcasts gnome-sound-recorder hexchat transmission-gtk five-or-more four-in-a-row gnome-games gnome-chess gnome-klotski gnome-mahjongg gnome-mines gnome-nibbles gnome-robots gnome-sudoku gnome-taquin gnome-tetravex cheese gnome-photos accerciser gnome-boxes gnome-builder && 
 arch-chroot /mnt archlinux-java set java-18-openjdk  &&
 
 #Phase 3
@@ -82,7 +91,7 @@ echo 'linux /vmlinuz-linux' >> /boot/loader/entries/arch.conf &&
 echo 'initrd /intel-ucode.img' >> /boot/loader/entries/arch.conf && 
 echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf && 
 echo 'options root="LABEL=LocalDisk" rw nvidia-drm.modeset=1' >> /boot/loader/entries/arch.conf &&   
-systemctl enable gdm && 
+systemctl enable lightdm && 
 systemctl enable dhcpcd && 
 systemctl enable NetworkManager && 
 systemctl --global enable pipewire.service pipewire-pulse.service wireplumber.service && 

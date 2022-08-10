@@ -25,7 +25,8 @@ pacman -Sy --noconfirm archlinux-keyring &&
 pacstrap /mnt base linux linux-firmware intel-ucode btrfs-progs net-tools networkmanager dhcpcd iwd vim man-pages man-db texinfo base-devel intel-ucode && 
 pacstrap /mnt sudo nano cinnamon gnome gdm gtk4 qt6 gnome-extra dkms gnome-terminal gedit gnome-system-monitor gnome-keyring cinnamon-translations && 
 pacstrap /mnt plasma-meta sddm kde && 
-pacstrap /mnt xfce mousepad && 
+pacstrap /mnt xfce xfce4 mousepad && 
+pacstrap /mnt mate gtk3 && 
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 

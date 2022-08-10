@@ -23,10 +23,10 @@ echo 'Installing Kernel Frameworks' &&
 pacman -Syy && 
 pacman -Sy --noconfirm archlinux-keyring && 
 pacstrap /mnt base linux linux-firmware intel-ucode btrfs-progs net-tools networkmanager dhcpcd iwd vim man-pages man-db texinfo base-devel intel-ucode && 
-pacstrap /mnt sudo nano cinnamon gnome gdm gtk4 qt6 gnome-extra dkms gnome-terminal gedit gnome-system-monitor gnome-keyring cinnamon-translations && 
-#pacstrap /mnt plasma-meta sddm kde && 
-#pacstrap /mnt xfce xfce4 mousepad && 
-#pacstrap /mnt mate gtk3 && 
+echo 'Installing Gnome' && 
+pacstrap /mnt sudo nano gnome-menus polkit-gnome gnome gdm gtk4 gnome-text-editor qt6 gnome-extra dkms gnome-terminal gedit gnome-system-monitor gnome-keyring && 
+echo 'Installing Cinnamon'
+pacstrap /mnt cinnamon lightdm gnome-terminal cinnamon-translations lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm-slick-greeter gedit gnome-system-monitor xed xreader vlc gnome-keyring cinnamon-translations pulseaudio archlinux-wallpaper qt6 gtk4 udev dbus && 
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 
@@ -90,7 +90,20 @@ EOT
 #Phase 4
 echo 'Attempting to install Linux Mint Flavor/s automatically now...' && 
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
+echo 'Installing any extra Desktop Environments' &&
 
+#arch-chroot /mnt /bin/bash <<"EOT"
+#ls -l &&
+#pacman -Sy flatpak snapd && 
+#pacman -Sy lxsession qt5 plasma-integration plasma-browser-integration kwin kmix knewstuff kitemmodels kcmutils kidletime qt5-graphicaleffects appstream-qt archlinux-appstream-data hicolor-icon-theme kirigami2 discount kuserfeedback powerdevil plasma-wayland-session plasma plasma-meta vlc ntp archlinux-wallpaper kde-applications sddm sddm-kcm kdeplasma-addons phonon-qt5-vlc packagekit-qt5 flatpak fwupd && 
+#pacman -Sy lxde mousepad vlc lxde-common archlinux-wallpaper ntp lxsession openbox mousepad lxdm lxpanel xcompmgr && 
+#pacman -Sy sddm xscreensaver xautolock lxqt ntp lximage-qt lxqt-about lxqt-admin lxqt-archiver lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-openssh-askpass lxqt-panel lxqt-policykit lxqt-powermanagement lxqt-qtplugin lxqt-runner lxqt-session archlinux-wallpaper vlc lxqt-sudo lxqt-themes obconf-qt pavucontrol-qt pcmanfm-qt qterminal screengrab pulseaudio breeze-icons oxygen-icons cups alsa-lib giflib libjpeg libpng xdg-utils mousepad && 
+#pacman -Sy mate mate-extra ttf-freefont lightdm lightdm-gtk-greeter gnome-terminal gnome-system-monitor vlc eom atril engrampa mate-applet-dock && 
+#pacman -Sy xfce4 mousepad parole ristretto thunar-archive-plugin thunar-media-tags-plugin xfce4-battery-plugin xfce4-datetime-plugin xfce4-mount-plugin xfce4-netload-plugin xfce4-notifyd xfce4-pulseaudio-plugin xfce4-screensaver xfce4-taskmanager xfce4-wavelan-plugin xfce4-weather-plugin xfce4-whiskermenu-plugin xfce4-xkb-plugin file-roller network-manager-applet ntp leafpad epdfview vlc galculator lightdm xfwm4-themes xfce4-settings lightdm-gtk-greeter lightdm-gtk-greeter-settings capitaine-cursors arc-gtk-theme xdg-user-dirs-gtk xfce4-goodies virtualbox-guest-utils xf86-video-vmware pavucontrol pulseaudio archlinux-wallpaper xfwm4 && xfconf-query -c xfwm4 -p /general/use_compositing -s true && 
+#pacman -Sy ttf-freefont lightdm lightdm-deepin-greeter vlc ntp deepin deepin-extra archlinux-wallpaper deepin-anything-arch pulseaudio mousepad &&
+#echo $$
+#EOT
+echo 'Installing yay for AUR support' && 
 arch-chroot /mnt /bin/bash <<"EOT"
 mkdir -p /tmp/arch/stage2 &&
 cd /tmp/arch/stage2 &&
@@ -105,6 +118,7 @@ sudo -u user01 makepkg -f -s --install --noconfirm --clean &&
 echo $$
 EOT
 
+echo 'Ensuring correct DM is set.' && 
 arch-chroot /mnt pacman -Sy lightdm && 
 arch-chroot /mnt pacman -Sy lightdm-gtk-greeter &&
 arch-chroot /mnt pacman -Sy lightdm-gtk-greeter-settings &&
@@ -112,7 +126,10 @@ arch-chroot /mnt pacman -Sy lightdm-slick-greeter &&
 arch-chroot /mnt pacman -Syu && 
 arch-chroot /mnt systemctl disable --now gdm && 
 arch-chroot /mnt systemctl enable lightdm && 
-
+#arch-chroot /mnt systemctl enable gdm &&
+#arch-chroot /mnt systemctl enable sddm &&
+#arch-chroot /mnt systemctl enable openbox && 
+echo 'Installing Arch-QOL-Extras' && 
 arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
 arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y libva-vdpau-driver-vp9-git && 
 arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks && 
@@ -129,7 +146,7 @@ arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y 
 arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring && 
 arch-chroot /mnt sudo -u user01 yay --answerclean y  --answerdiff y --answeredit y --answerupgrade y --nodiffmenu --noremovemake gnome-calendar-linuxmint && 
 arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y xboxdrv && 
-arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y systemd-kcm &&
+#arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y systemd-kcm &&
 
 #Phase 5
 echo 'Cleaning up' && 

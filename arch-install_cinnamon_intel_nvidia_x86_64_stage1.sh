@@ -1,8 +1,10 @@
 #!/bin/sh
 
-ENDSECTOR=$(sgdisk -E "$1")
+
 OSDRIVE="/dev/nvme1n1"
-USERX="fahr"
+USERX="user01"
+
+ENDSECTOR=$(sgdisk -E "OSDRIVE")
 
 #Phase 1
 echo 'Enable MultiLib' && 
@@ -115,7 +117,7 @@ echo 'Attempting to install Linux Mint Flavor/s automatically now...' &&
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 
 arch-chroot /mnt /bin/bash <<"EOT"
-USERX="USERX"
+USERX="user01"
 mkdir -p /tmp/arch/stage2 &&
 cd /tmp/arch/stage2 &&
 ls -l && 

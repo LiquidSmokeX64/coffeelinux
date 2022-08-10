@@ -23,8 +23,8 @@ echo 'Installing Kernel Frameworks' &&
 pacman -Syy && 
 pacman -Sy --noconfirm archlinux-keyring && 
 pacstrap /mnt base linux linux-firmware intel-ucode btrfs-progs net-tools networkmanager dhcpcd iwd vim man-pages man-db texinfo base-devel intel-ucode && 
-echo 'Installing Gnome' && 
-pacstrap /mnt sudo nano gnome-menus polkit-gnome gnome gdm gtk4 gnome-text-editor qt6 gnome-extra dkms gnome-terminal gedit gnome-system-monitor gnome-keyring && 
+#echo 'Installing Gnome' && 
+#pacstrap /mnt sudo nano gnome-menus polkit-gnome gnome gdm gtk4 gnome-text-editor qt6 gnome-extra dkms gnome-terminal gedit gnome-system-monitor gnome-keyring && 
 echo 'Installing Cinnamon'
 pacstrap /mnt cinnamon lightdm gnome-terminal cinnamon-translations lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm-slick-greeter gedit gnome-system-monitor xed xreader vlc gnome-keyring cinnamon-translations pulseaudio archlinux-wallpaper qt6 gtk4 udev dbus && 
 echo 'Creating Links' && 
@@ -119,12 +119,12 @@ echo $$
 EOT
 
 echo 'Ensuring correct DM is set.' && 
-arch-chroot /mnt pacman -Sy lightdm && 
+arch-chroot /mnt pacman -Sy lightdm gtk3 && 
 arch-chroot /mnt pacman -Sy lightdm-gtk-greeter &&
 arch-chroot /mnt pacman -Sy lightdm-gtk-greeter-settings &&
 arch-chroot /mnt pacman -Sy lightdm-slick-greeter && 
 arch-chroot /mnt pacman -Syu && 
-arch-chroot /mnt systemctl disable --now gdm && 
+#arch-chroot /mnt systemctl disable --now gdm && 
 arch-chroot /mnt systemctl enable lightdm && 
 #arch-chroot /mnt systemctl enable gdm &&
 #arch-chroot /mnt systemctl enable sddm &&

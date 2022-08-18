@@ -105,7 +105,7 @@ export yayflags= "--nodiffmenu --noremovemake --answerclean y  --answerdiff y --
 
 export gnome="sudo nano gnome-menus polkit-gnome gnome gdm gtk4 gnome-text-editor gnome-menus polkit-gnome qt6 gnome-extra dkms gnome-terminal gedit gnome-system-monitor gnome-keyring" 
 
-export cinnamon="sudo nano cinnamon lightdm gnome-terminal cinnamon-translations lightdm-gtk-greeter lightdm-gtk-greeter-settings gnome-calculator gnome-system-monitor xed xreader vlc gnome-keyring cinnamon-translations pulseaudio archlinux-wallpaper qt6 gtk3 udev polkit-gnome dbus"
+export cinnamon="sudo nano cinnamon lightdm gnome-disk-utility gnome-terminal cinnamon-translations lightdm-gtk-greeter lightdm-gtk-greeter-settings gnome-calculator gnome-system-monitor xed xreader vlc gnome-keyring cinnamon-translations pulseaudio archlinux-wallpaper qt6 gtk3 udev polkit-gnome dbus"
 
 export lxqt="sddm xscreensaver xautolock lxqt ntp lximage-qt lxqt-about lxqt-admin lxqt-archiver lxqt-config lxqt-globalkeys lxqt-notificationd lxqt-openssh-askpass lxqt-panel lxqt-policykit lxqt-powermanagement lxqt-qtplugin lxqt-runner lxqt-session archlinux-wallpaper vlc lxqt-sudo lxqt-themes obconf-qt pavucontrol-qt pcmanfm-qt qterminal screengrab pulseaudio breeze-icons oxygen-icons cups alsa-lib giflib libjpeg libpng xdg-utils mousepad"
 

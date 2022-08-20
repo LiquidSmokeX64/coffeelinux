@@ -10,8 +10,8 @@ This Installer will create an Arch-Linux install that is a little different than
 
 Features: 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
-2. Any Desktop Environment (Cinnamon,Gnome,KDE,Mate,LXDE,LXQT, and XFCE). (Always the latest version/s)
-4. Linux Mint Themes, Sounds, Icons, and Backgrounds (to some extent on all DEs).
+2. Any Cinnamon Desktop Environment (Always the latest version)
+4. Linux Mint Themes, Sounds, Icons, and Backgrounds.
 5. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 6. Chrome Preinstalled via AUR (not Firefox)
 8. Latest Pipewire & Wireplumber for the best possible sound.
@@ -38,8 +38,8 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 5: Enter: git clone https://liquidsmokex64/arch-linux-installer.git
 
-6: Enter: bash /arch-linux-installer/arch-install_cinnamon_intel_nvidia_x86_64_stage1.sh
-
+6: Enter: bash /arch-linux-installer/mintinstaller-cinnamon.sh or mintinstaller-cinnamon-fallback
+Note: mintinstaller-cinnamon.sh is VERY EXPERIMENTAL.
 7: Follow the prompts as needed.
 
 That should finish it off for you. Enjoy your new Linux Mint "Alpine"

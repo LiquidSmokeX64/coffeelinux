@@ -156,7 +156,8 @@ arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y 
 arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork-cinnamon && 
 arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring && 
 arch-chroot /mnt sudo -u user01 yay --answerclean y  --answerdiff y --answeredit y --answerupgrade y --nodiffmenu --noremovemake gnome-calendar-linuxmint && 
-#arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y xboxdrv && 
+
+arch-chroot /mnt sudo -u user01 yay --answerclean y  --answerdiff y --answeredit y --answerupgrade y --nodiffmenu --noremovemake google-chrome && 
 #arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y systemd-kcm &&
 }
 installextras
@@ -165,7 +166,7 @@ echo 'Ensuring correct DM is set.' &&
 arch-chroot /mnt pacman -Sy lightdm gtk3 && 
 arch-chroot /mnt pacman -Sy lightdm-gtk-greeter && 
 arch-chroot /mnt pacman -Syu && 
-arch-chroot /mnt systemctl disable --now gdm && 
+#arch-chroot /mnt systemctl disable --now gdm && 
 arch-chroot /mnt systemctl enable lightdm && 
 #arch-chroot /mnt systemctl enable gdm &&
 #arch-chroot /mnt systemctl enable sddm &&

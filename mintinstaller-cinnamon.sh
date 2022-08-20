@@ -113,7 +113,8 @@ source /usr/local/bin
 source /usr/bin
 setvar
 mkdir -p /mnt/usr/local/bin
-cp -r /usr/local/bin/* /mnt/usr/local/bin 
+cp -r arch-linux-installer/mintinstaller-cinnamon.sh /mnt/usr/local/bin/mintinstaller-cinnamon
+cp -r arch-linux-installer/mintinstaller-cinnamon-fallback.sh /mnt/usr/local/bin/mintinstaller-cinnamon-fallback
 }
 
 function installcinnamon(){

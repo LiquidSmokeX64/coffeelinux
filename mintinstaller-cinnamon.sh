@@ -76,7 +76,7 @@ baseconf="base linux linux-firmware linux-headers dkms intel-ucode btrfs-progs n
 
 loaderentries="/boot/loader/entries/arch.conf"
 loaderconf="/boot/loader/loader.conf"
-installerdir="/usr/share/installer"
+installerdir="arch-linux-installer"
 #End Variables
 echo "Setting Variables...completed sucessfully"
 }

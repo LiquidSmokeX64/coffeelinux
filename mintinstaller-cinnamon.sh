@@ -241,6 +241,8 @@ $chroot $usershell yay $yayflags mint-artwork
 $chroot $usershell yay $yayflags mint-artwork-cinnamon 
 $chroot $usershell yay $yayflags google-chrome
 #$chroot $serviceoff --now gdm && 
+$chroot $pacman lightdm 
+$chroot $pacman lightdm-gtk-greeter 
 $chroot $serviceon lightdm 
 #$chroot $serviceon gdm &&
 #$chroot $serviceon systemctl enable sddm &&

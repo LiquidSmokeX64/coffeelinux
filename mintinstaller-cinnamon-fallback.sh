@@ -36,7 +36,7 @@ pacstrap /mnt base linux linux-firmware linux-headers intel-ucode btrfs-progs ne
 #echo 'Installing Gnome' && 
 #pacstrap /mnt sudo nano gnome-menus polkit-gnome gnome gdm gtk4 gnome-text-editor qt6 gnome-extra dkms gnome-terminal gedit gnome-system-monitor gnome-keyring && 
 echo 'Installing Cinnamon'
-pacstrap /mnt cinnamon lightdm mate-terminal mate-calc cinnamon-translations lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm-slick-greeter gedit gnome-system-monitor xed xreader vlc gnome-keyring cinnamon-translations pulseaudio archlinux-wallpaper udev dbus && 
+pacstrap /mnt cinnamon lightdm mate-terminal gnome-disk-utility mate-calc cinnamon-translations lightdm-gtk-greeter lightdm-gtk-greeter-settings lightdm-slick-greeter gedit gnome-system-monitor xed xreader vlc gnome-keyring cinnamon-translations pulseaudio archlinux-wallpaper udev dbus && 
 echo 'Creating Links' && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
 echo 'Set Root Password' && 

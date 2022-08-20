@@ -7,7 +7,7 @@ function edittherepos(){
 echo 'Enable Repos' && 
 nano /etc/pacman.conf && 
 pacman -Sy && 
-pacman -Sy --noconfirm archlinux-keyring && 
+pacman -Sy --noconfirm archlinux-keyring
 }
 edittherepos
 function prepthedrive(){
@@ -24,7 +24,7 @@ swapon /dev/nvme1n1p2 &&
 mount /dev/nvme1n1p3 /mnt && 
 mkdir /mnt/boot && 
 #mkdir /mnt/efi &&
-mount /dev/nvme1n1p1 /mnt/boot && 
+mount /dev/nvme1n1p1 /mnt/boot
 #mount /dev/nvme1n1p2 /mnt/efi && 
 }
 prepthedrive
@@ -44,7 +44,7 @@ arch-chroot /mnt passwd &&
 echo 'Adding User Account' && 
 arch-chroot /mnt useradd -m -G wheel,audio,video,power,users,storage user01 && 
 echo 'Set User Password' && 
-arch-chroot /mnt passwd user01 && 
+arch-chroot /mnt passwd user01 
 }
 installbase
 #Phase 2
@@ -56,7 +56,7 @@ cp --dereference /etc/resolv.conf /mnt/etc/
 arch-chroot /mnt pacman -Syy && 
 arch-chroot /mnt pacman -Sy gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad xed xreader vlc pulseaudio archlinux-wallpaper udev dbus && 
 arch-chroot /mnt pacman -Sy power-profiles-daemon cpupower go meson xorg xorg-server xorg-apps virtualbox-guest-utils xf86-video-vmware nvidia-dkms nvidia-utils nvidia-settings git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src steam-native-runtime wine-mono wine-gecko lib32-opencl-nvidia zenity lutris discord steam polkit-gnome gnome-keyring gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell virtualbox libreoffice-fresh && 
-arch-chroot /mnt archlinux-java set java-18-openjdk  &&
+arch-chroot /mnt archlinux-java set java-18-openjdk
 }
 installextrapackages
 #Phase 3
@@ -97,7 +97,7 @@ systemctl enable lightdm &&
 systemctl enable dhcpcd && 
 systemctl enable NetworkManager && 
 systemctl --global enable pipewire.service pipewire-pulse.service wireplumber.service && 
-systemctl enable firewalld && 
+systemctl enable firewalld
 echo $$
 EOT
 }
@@ -107,7 +107,7 @@ function fixthehomedir(){
 echo 'Attempting to install Linux Mint Flavor/s automatically now...' && 
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 arch-chroot /mnt xdg-user-dirs-update &&
-echo 'Installing any extra Desktop Environments' &&
+echo 'Installing any extra Desktop Environments'
 }
 fixthehomedir
 #arch-chroot /mnt /bin/bash <<"EOT"
@@ -134,7 +134,7 @@ sudo -u user01 xdg-user-dirs-update &&
 sudo -u user01 sudo chown -R user01:users ./yay && 
 sudo -u user01 id user01 && 
 cd /opt/yay &&
-sudo -u user01 makepkg -f -s --install --noconfirm --clean &&  
+sudo -u user01 makepkg -f -s --install --noconfirm --clean  
 echo $$
 EOT
 }
@@ -157,7 +157,7 @@ arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y 
 arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring && 
 arch-chroot /mnt sudo -u user01 yay --answerclean y  --answerdiff y --answeredit y --answerupgrade y --nodiffmenu --noremovemake gnome-calendar-linuxmint && 
 
-arch-chroot /mnt sudo -u user01 yay --answerclean y  --answerdiff y --answeredit y --answerupgrade y --nodiffmenu --noremovemake google-chrome && 
+arch-chroot /mnt sudo -u user01 yay --answerclean y  --answerdiff y --answeredit y --answerupgrade y --nodiffmenu --noremovemake google-chrome 
 #arch-chroot /mnt sudo -u user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y systemd-kcm &&
 }
 installextras
@@ -167,7 +167,7 @@ arch-chroot /mnt pacman -Sy lightdm gtk3 &&
 arch-chroot /mnt pacman -Sy lightdm-gtk-greeter && 
 arch-chroot /mnt pacman -Syu && 
 #arch-chroot /mnt systemctl disable --now gdm && 
-arch-chroot /mnt systemctl enable lightdm && 
+arch-chroot /mnt systemctl enable lightdm
 #arch-chroot /mnt systemctl enable gdm &&
 #arch-chroot /mnt systemctl enable sddm &&
 #arch-chroot /mnt systemctl enable openbox &&  
@@ -182,9 +182,9 @@ cp arch-linux-installer/chrome-flags.conf /mnt/VAAPI-Chrome/chrome-flags.conf &&
 chmod a+x /mnt/VAAPI-Chrome/chrome-flags.conf && 
 cp arch-linux-installer/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/VAAPI-Chrome/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop &&  
 chmod a+x /mnt/VAAPI-Chrome/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop && 
-umount -R /mnt && 
-#reboot
+umount -R /mnt
 echo "Installation Complete, Please Reboot to use your OS."
 read -n 1 -s -r -p "Press any key to continue"
+reboot
 }
 cleanupafter

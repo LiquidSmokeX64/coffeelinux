@@ -175,7 +175,8 @@ arch-chroot /mnt systemctl enable lightdm &&
 fixthedm
 function cleanupafter(){
 #Phase 5
-echo 'Cleaning up' && 
+echo 'Cleaning up' &&
+cp /home/os-release /mnt/usr/lib/os-release
 mkdir /mnt/VAAPI-Chrome && 
 cp arch-linux-installer/chrome-flags.conf /mnt/VAAPI-Chrome/chrome-flags.conf && 
 chmod a+x /mnt/VAAPI-Chrome/chrome-flags.conf && 

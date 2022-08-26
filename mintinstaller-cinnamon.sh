@@ -71,7 +71,7 @@ function fixthehomedir(){
 echo 'Attempting to fix the home directory automatically now...' && 
 read -n 1 -s -r -p "Press any key to continue"
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
-arch-chroot /mnt xdg-user-dirs-update &&
+arch-chroot /mnt xdg-user-dirs-update
 }
 function fixthedm(){
 echo 'Ensuring correct DM is set.' && 
@@ -95,7 +95,7 @@ mkdir /mnt/VAAPI-Chrome &&
 cp arch-linux-installer/chrome-flags.conf /mnt/VAAPI-Chrome/chrome-flags.conf && 
 chmod a+x /mnt/VAAPI-Chrome/chrome-flags.conf && 
 cp arch-linux-installer/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/VAAPI-Chrome/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop &&  
-chmod a+x /mnt/VAAPI-Chrome/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop && 
+chmod a+x /mnt/VAAPI-Chrome/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop 
 umount -R /mnt
 echo "Installation Complete, Please Reboot to use your OS."
 read -n 1 -s -r -p "Press any key to continue"

@@ -82,7 +82,7 @@ arch-chroot /mnt pacman -Syu &&
 #arch-chroot /mnt systemctl disable --now gdm && 
 #arch-chroot /mnt systemctl enable lightdm
 arch-chroot /mnt systemctl enable gdm &&
-arch-chroot /mnt systemctl enable powerprofilesctl set performance &&
+arch-chroot /mnt systemctl enable powerprofilesctl set performance
 #arch-chroot /mnt systemctl enable openbox &&  
 }
 function cleanupafter(){

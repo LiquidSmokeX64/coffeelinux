@@ -69,11 +69,13 @@ arch-chroot /mnt archlinux-java set java-18-openjdk
 }
 function fixthehomedir(){
 echo 'Attempting to fix the home directory automatically now...' && 
+read -n 1 -s -r -p "Press any key to continue"
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 arch-chroot /mnt xdg-user-dirs-update &&
 }
 function fixthedm(){
 echo 'Ensuring correct DM is set.' && 
+read -n 1 -s -r -p "Press any key to continue"
 arch-chroot /mnt pacman -R lightdm lightdm-slick-greeter && 
 #arch-chroot /mnt pacman -Sy  && 
 arch-chroot /mnt pacman -Syu && 
@@ -86,6 +88,7 @@ arch-chroot /mnt systemctl enable powerprofilesctl set performance &&
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
+read -n 1 -s -r -p "Press any key to continue"
 cp /home/os-release /mnt/usr/local/lib/
 cp /home/os-release /mnt/usr/etc/
 mkdir /mnt/VAAPI-Chrome && 
@@ -172,6 +175,7 @@ read -n 1 -s -r -p "Press any key to continue"
 fixthehomedir
 read -n 1 -s -r -p "Press any key to continue"
 echo 'Installing Arch-QOL-Extras' && 
+read -n 1 -s -r -p "Press any key to continue" 
 arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
 arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y libva-vdpau-driver-vp9-git && 
 arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks && 

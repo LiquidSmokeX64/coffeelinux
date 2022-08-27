@@ -31,12 +31,18 @@ arch-chroot /mnt xdg-user-dirs-update
 function fixthedm(){
 echo 'Ensuring correct DM is set.' && 
 #read -n 1 -s -r -p "Press any key to continue" && 
-arch-chroot /mnt pacman -S lightdm lightdm-slick-greeter && 
+arch-chroot /mnt pacman -S lightdm lightdm-gtk-greeter && 
 #arch-chroot /mnt pacman -Sy  && 
 arch-chroot /mnt pacman -Syu && 
 #arch-chroot /mnt systemctl disable --now gdm && 
 #arch-chroot /mnt systemctl enable lightdm &&
-arch-chroot /mnt systemctl enable lightdm
+arch-chroot /mnt systemctl preset-all && 
+arch-chroot /mnt systemctl disable systemd-resolved && 
+arch-chroot /mnt systemctl disable systemd-networkd && 
+systemctl enable dhcpcd && 
+systemctl enable NetworkManager && 
+systemctl --global enable pipewire.service pipewire-pulse.service wireplumber.service && 
+systemctl enable firewalld
 #arch-chroot /mnt powerprofilesctl set performance
 #arch-chroot /mnt systemctl enable openbox &&  
 }
@@ -172,7 +178,7 @@ echo 'initrd /initramfs-linux.img' >> /boot/loader/entries/arch.conf &&
 echo 'options root="LABEL=CoffeePot" rw nvidia-drm.modeset=1' >> /boot/loader/entries/arch.conf && 
 echo 'Presetting default services.' && 
 #read -n 1 -s -r -p "Press any key to continue" &&
-systemctl enable gdm && 
+systemctl enable lightdm && 
 systemctl enable dhcpcd && 
 systemctl enable NetworkManager && 
 systemctl --global enable pipewire.service pipewire-pulse.service wireplumber.service && 

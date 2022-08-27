@@ -37,17 +37,14 @@ arch-chroot /mnt pacman -Syu &&
 #arch-chroot /mnt systemctl disable --now gdm && 
 #arch-chroot /mnt systemctl enable lightdm &&
 arch-chroot /mnt systemctl enable gdm
-#arch-chroot /mnt systemctl enable powerprofilesctl set performance
+#arch-chroot /mnt powerprofilesctl set performance
 #arch-chroot /mnt systemctl enable openbox &&  
 }
 
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
-arch-chroot /mnt sudo -u $user xdg-user-dirs-update &&
-#read -n 1 -s -r -p "Press any key to continue" && 
-#cp /home/os-release /mnt/usr/local/lib/
-#cp /home/os-release /mnt/usr/etc/
+cp arch-linux-installer/mintinstaller-cinnamon.sh /mnt/opt/ &&
 mkdir /mnt/VAAPI-Chrome && 
 cp arch-linux-installer/chrome-flags.conf /mnt/VAAPI-Chrome/chrome-flags.conf && 
 chmod a+x /mnt/VAAPI-Chrome/chrome-flags.conf && 
@@ -145,12 +142,14 @@ echo 'Adding User Account' &&
 arch-chroot /mnt useradd -m -G wheel,audio,video,power,users,storage --badname $user01 && 
 echo 'Set User Password' && 
 arch-chroot /mnt passwd $user01 
+echo 'Set Temporary User Password' && 
+arch-chroot /mnt useradd -m -G wheel,audio,video,power,users,storage --badname user02 && 
+arch-chroot /mnt passwd user02 && 
 #read -n 1 -s -r -p "Press any key to continue" &&
 #Phase 2
 installextrapackages &&
 #read -n 1 -s -r -p "Press any key to continue" &&
 #Phase 3
-
 
 arch-chroot /mnt /bin/bash <<"EOT"
 mkdir -p /tmp/arch &&
@@ -182,36 +181,39 @@ echo $$
 EOT
 
 fixthehomedir &&
+
 echo 'Installing yay for AUR support' &&
 arch-chroot /mnt /bin/bash <<"EOT"
-#mkdir -p /tmp/arch/stage2 &&
-#cd /tmp/arch/stage2 &&
+mkdir -p /tmp/arch/stage2 &&
+cd /tmp/arch/stage2 &&
 ls -l && 
 cd /opt &&
-echo "AUR apps installation"
-sudo git clone https://aur.archlinux.org/yay.git && 
-sudo chown -hR $user01:users ./yay &&  
+echo "AUR apps installation" &&
+sudo -Su user02 sudo git clone https://aur.archlinux.org/yay.git && 
+sudo -Su user02 sudo chown -hR user02:users ./yay &&  
 cd /opt/yay &&
-sudo -bHkESnu $user01 makepkg -f -s --install --noconfirm --clean &&
-sudo -bHkESnu $user01 xdg-user-dirs-update 
+sudo -Su user02 makepkg -f -s --install --noconfirm --clean &&
+cd / &&
+sudo -Su user02 xdg-user-dirs-update 
 echo $$
 EOT
 
 #read -n 1 -s -r -p "Press any key to continue" &&
-#echo 'Installing Arch-QOL-Extras' && 
+#echo 'Installing Arch-QOL-Extras' &&
+arch-chroot /mnt userdel user02 &&  
 #read -n 1 -s -r -p "Press any key to continue" &&  
-arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
-arch-chroot /mnt sudo --bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y libva-vdpau-driver-vp9-git && 
-arch-chroot /mnt -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks && 
-arch-chroot /mnt -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver && 
-arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y cpupower-gui && 
-arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev && 
-arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mintlocale && 
-arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork &&
-arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork-cinnamon && 
-arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring && 
-arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-calendar-linuxmint && 
-arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y libva-vdpau-driver-vp9-git && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y cpupower-gui && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mintlocale && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork &&
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork-cinnamon && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-calendar-linuxmint && 
+arch-chroot /mnt sudo -Su $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
 #read -n 1 -s -r -p "Press any key to continue" &&
 fixthedm &&
 #read -n 1 -s -r -p "Press any key to continue" &&

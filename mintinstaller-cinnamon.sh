@@ -19,7 +19,7 @@ cp --dereference /etc/resolv.conf /mnt/etc/ &&
 arch-chroot /mnt pacman -Syy &&
 echo 'Installing Drivers and dependencies.' && 
 #read -n 1 -s -r -p "Press any key to continue" && 
-arch-chroot /mnt pacman -Sy power-profiles-daemon cpupower go meson xorg xorg-server xorg-apps virtualbox-guest-utils xf86-video-vmware nvidia-open git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src steam-native-runtime wine-mono wine-gecko lib32-opencl-nvidia zenity lutris discord steam polkit-gnome gnome-keyring gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell virtualbox libreoffice-fresh && 
+arch-chroot /mnt pacman -Sy power-profiles-daemon cpupower go meson xorg xorg-server xorg-apps virtualbox-guest-utils xf86-video-vmware nvidia-open git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src steam wine-mono wine-gecko lib32-opencl-nvidia zenity lutris discord steam polkit-gnome gnome-keyring gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell virtualbox && 
 arch-chroot /mnt archlinux-java set java-18-openjdk
 }
 function fixthehomedir(){
@@ -40,9 +40,17 @@ arch-chroot /mnt systemctl enable gdm
 #arch-chroot /mnt systemctl enable powerprofilesctl set performance
 #arch-chroot /mnt systemctl enable openbox &&  
 }
+
+function installyay(){
+
+echo $$
+EOT
+}
+
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
+arch-chroot /mnt sudo -u $user xdg-user-dirs-update &&
 #read -n 1 -s -r -p "Press any key to continue" && 
 #cp /home/os-release /mnt/usr/local/lib/
 #cp /home/os-release /mnt/usr/etc/
@@ -53,8 +61,30 @@ cp arch-linux-installer/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop 
 chmod a+x /mnt/VAAPI-Chrome/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop &&
 umount -R /mnt &&
 echo "Installation Complete, Please Reboot to use your OS." && 
-read -n 1 -s -r -p "Press any key to continue" && 
-reboot
+read -n 1 -s -r -p "Press any key to continue" 
+#reboot
+}
+
+function setlocale(){
+arch-chroot /mnt /bin/bash <<"EOT"
+echo 'Setting Locale' && 
+#read -n 1 -s -r -p "Press any key to continue" &&
+ln -sf ../usr/share/zoneinfo/America/Los_Angeles /etc/localtime && 
+hwclock --systohc && 
+echo 'en_US ISO-8859-1' >> /etc/locale.gen && 
+echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && 
+echo 'KEYMAP=us' > /etc/vconsole.conf && 
+echo 'LANG=en_US.UTF-8' > /etc/locale.conf && 
+export LANG=en_US.UTF-8 && 
+locale-gen &&  
+echo 'Setting Hostname' && 
+#read -n 1 -s -r -p "Press any key to continue" &&
+echo 'Coffee-Linux' > /etc/hostname && 
+echo '127.0.0.1 localhost' >> /etc/hosts && 
+echo '::1 localhost' >> /etc/hosts && 
+echo '127.0.1.1 Coffee-Linux' >> /etc/hosts && 
+echo $$
+EOT
 }
 
 echo "This script must be run as root"
@@ -105,12 +135,13 @@ echo 'Installing Kernel Frameworks' &&
 #read -n 1 -s -r -p "Press any key to continue" &&
 pacman -Syy && 
 pacman -Sy --noconfirm archlinux-keyring && 
-pacstrap /mnt base linux linux-firmware linux-headers intel-ucode btrfs-progs net-tools networkmanager dhcpcd iwd vim man-pages man-db texinfo base-devel intel-ucode && 
+pacstrap /mnt base linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo && 
 #echo 'Installing Gnome' && 
 #pacstrap /mnt sudo nano gnome-menus polkit-gnome gnome gdm gtk4 gnome-text-editor qt6 gnome-extra dkms gnome-terminal gedit gnome-system-monitor gnome-keyring && 
 echo 'Installing Cinnamon' && 
+setlocale && 
 #read -n 1 -s -r -p "Press any key to continue" &&
-arch-chroot /mnt pacman -Sy cinnamon gdm gtk4 gnome-terminal gnome-disk-utility gnome-calculator cinnamon-translations mutter gnome-system-monitor xed xreader vlc gnome-keyring cinnamon-translations archlinux-wallpaper udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad && 
+arch-chroot /mnt pacman -Sy git base-devel intel-ucode cinnamon gdm gtk4 gnome-terminal gnome-disk-utility gnome-calculator cinnamon-translations mutter gnome-system-monitor xed xreader vlc gnome-keyring cinnamon-translations archlinux-wallpaper udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad sudo nano && 
 echo 'Creating Links' && 
 #read -n 1 -s -r -p "Press any key to continue" && 
 genfstab -U /mnt >> /mnt/etc/fstab &&
@@ -123,7 +154,7 @@ arch-chroot /mnt passwd $user01
 #read -n 1 -s -r -p "Press any key to continue" &&
 #Phase 2
 installextrapackages &&
-read -n 1 -s -r -p "Press any key to continue" &&
+#read -n 1 -s -r -p "Press any key to continue" &&
 #Phase 3
 
 
@@ -132,22 +163,6 @@ mkdir -p /tmp/arch &&
 cd /tmp/arch &&
 ls -l && 
 cd / &&  
-echo 'Setting Locale' && 
-#read -n 1 -s -r -p "Press any key to continue" &&
-ln -sf ../usr/share/zoneinfo/America/Los_Angeles /etc/localtime && 
-hwclock --systohc && 
-echo 'en_US ISO-8859-1' >> /etc/locale.gen && 
-echo 'en_US.UTF-8 UTF-8' >> /etc/locale.gen && 
-echo 'KEYMAP=us' > /etc/vconsole.conf && 
-echo 'LANG=en_US.UTF-8' > /etc/locale.conf && 
-export LANG=en_US.UTF-8 && 
-locale-gen &&  
-echo 'Setting Hostname' && 
-#read -n 1 -s -r -p "Press any key to continue" &&
-echo 'Coffee-Linux' > /etc/hostname && 
-echo '127.0.0.1 localhost' >> /etc/hosts && 
-echo '::1 localhost' >> /etc/hosts && 
-echo '127.0.1.1 Coffee-Linux' >> /etc/hosts && 
 echo '%wheel ALL=(ALL:ALL) ALL' > /etc/sudoers.d/wheel &&
 mkinitcpio -P && 
 echo Installing Bootloader &&
@@ -174,40 +189,37 @@ EOT
 
 fixthehomedir &&
 echo 'Installing yay for AUR support' &&
-function rootforyay(){ 
 arch-chroot /mnt /bin/bash <<"EOT"
-mkdir -p /tmp/arch/stage2 &&
-cd /tmp/arch/stage2 &&
+#mkdir -p /tmp/arch/stage2 &&
+#cd /tmp/arch/stage2 &&
 ls -l && 
 cd /opt &&
-echo "Please enter the Username again for AUR apps installation"
-read user01
-sudo -u $user01 sudo git clone https://aur.archlinux.org/yay.git && 
-sudo -u $user01 sudo chown -R $user01:users ./yay && 
-sudo -u $user01 id $user01 && 
+echo "AUR apps installation"
+sudo git clone https://aur.archlinux.org/yay.git && 
+sudo chown -hR $user01:users ./yay &&  
 cd /opt/yay &&
-sudo -u $user01 makepkg -f -s --install --noconfirm --clean 
+sudo -bHkESnu $user01 makepkg -f -s --install --noconfirm --clean &&
+sudo -bHkESnu $user01 xdg-user-dirs-update 
 echo $$
 EOT
-}
-rootforyay
+
 #read -n 1 -s -r -p "Press any key to continue" &&
 #echo 'Installing Arch-QOL-Extras' && 
 #read -n 1 -s -r -p "Press any key to continue" &&  
-arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
-arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y libva-vdpau-driver-vp9-git && 
-arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks && 
-arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver && 
-arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y cpupower-gui && 
-arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev && 
-arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mintlocale && 
-arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork &&
-arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork-cinnamon && 
-arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring && 
-arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-calendar-linuxmint && 
-arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
+arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y pamac-aur && 
+arch-chroot /mnt sudo --bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y libva-vdpau-driver-vp9-git && 
+arch-chroot /mnt -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y protontricks && 
+arch-chroot /mnt -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y nvidia-vaapi-driver && 
+arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y cpupower-gui && 
+arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y game-devices-udev && 
+arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mintlocale && 
+arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork &&
+arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork-cinnamon && 
+arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring && 
+arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-calendar-linuxmint && 
+arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
 #read -n 1 -s -r -p "Press any key to continue" &&
 fixthedm &&
 #read -n 1 -s -r -p "Press any key to continue" &&
 cleanupafter
-S
+

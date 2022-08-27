@@ -204,8 +204,8 @@ arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y
 arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork &&
 arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y mint-artwork-cinnamon && 
 arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y linuxmint-keyring && 
-arch-chroot /mnt sudo -u $user01 yay --answerclean y  --answerdiff y --answeredit y --answerupgrade y --nodiffmenu --noremovemake gnome-calendar-linuxmint && 
-arch-chroot /mnt sudo -u $user01 yay --answerclean y  --answerdiff y --answeredit y --answerupgrade y --nodiffmenu --noremovemake google-chrome && 
+arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y gnome-calendar-linuxmint && 
+arch-chroot /mnt sudo -u $user01 yay --nodiffmenu --noremovemake --answerclean y  --answerdiff y --answeredit y --answerupgrade y google-chrome && 
 #read -n 1 -s -r -p "Press any key to continue" &&
 fixthedm &&
 #read -n 1 -s -r -p "Press any key to continue" &&

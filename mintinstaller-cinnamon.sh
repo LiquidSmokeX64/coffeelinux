@@ -41,12 +41,6 @@ arch-chroot /mnt systemctl enable gdm
 #arch-chroot /mnt systemctl enable openbox &&  
 }
 
-function installyay(){
-
-echo $$
-EOT
-}
-
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
@@ -61,8 +55,8 @@ cp arch-linux-installer/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop 
 chmod a+x /mnt/VAAPI-Chrome/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop &&
 umount -R /mnt &&
 echo "Installation Complete, Please Reboot to use your OS." && 
-read -n 1 -s -r -p "Press any key to continue" 
-#reboot
+read -n 1 -s -r -p "Press any key to continue" && 
+reboot
 }
 
 function setlocale(){
@@ -222,4 +216,3 @@ arch-chroot /mnt sudo -bHkESnu $user01 yay --nodiffmenu --noremovemake --answerc
 fixthedm &&
 #read -n 1 -s -r -p "Press any key to continue" &&
 cleanupafter
-

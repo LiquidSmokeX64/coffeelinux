@@ -40,7 +40,7 @@ arch-chroot /mnt systemctl enable lightdm
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
-cp arch-linux-installer/coffeebrewer.sh /mnt/opt/ &&
+#cp arch-linux-installer/coffeebrewer.sh /mnt/opt/ &&
 cp arch-linux-installer/chrome-flags.conf /mnt/opt/ && 
 cp arch-linux-installer/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ && 
 umount -R /mnt &&

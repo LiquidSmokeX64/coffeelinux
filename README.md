@@ -1,6 +1,6 @@
-# Coffee-Linux (Script-Installed Arch-Distro for Gamers)
+# Coffee-Linux (Script-Installed Arch-Linux for Gamers)
 [Description]
-Key Features: Arch-Based, BTRFS installation, GDM, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
+Key Features: Arch-Based, BTRFS installation, Hybridized Desktop Environment/s, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
 
 A script designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
 
@@ -8,7 +8,7 @@ This Installer will create an Coffee-Linux install.
 
 Features: 
 1. Pure Arch foundation using official repos (and a little AUR here and there)
-2. A Cinnamon Desktop Environment (Always the latest version)
+2. A Cinnamon/Gnome Desktop Environment (Always the latest version)
 4. Linux Mint Themes, Sounds, Icons, and Backgrounds.
 5. Pamac Graphical Software Manager (Select "1 4" in part 4 when prompted for pamac-aur for full functionality)
 6. Chrome Preinstalled via AUR (not Firefox)
@@ -35,7 +35,10 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 5: Enter: git clone https://liquidsmokex64/arch-linux-installer.git
 
-6: Enter: bash /arch-linux-installer/mintinstaller-cinnamon.sh
-7: Follow the prompts as needed.
+6: Enter: bash /arch-linux-installer/coffeebrewer.sh
+7: Follow the prompts as needed. (mostly just password prompts and confirmation/overwrite dialogues lol)
 
 That should finish it off for you. Enjoy you Coffee-Linux.
+
+Hashtags:
+#GamingOnLinux #ArchGaming #SteamLinux #ArchInstaller #CoffeeLinux

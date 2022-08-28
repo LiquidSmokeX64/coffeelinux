@@ -36,6 +36,7 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 5: Enter: git clone https://liquidsmokex64/arch-linux-installer.git
 
 6: Enter: bash /arch-linux-installer/coffeebrewer.sh
+
 7: Follow the prompts as needed. (mostly just password prompts and confirmation/overwrite dialogues lol)
 
 That should finish it off for you. Enjoy you Coffee-Linux.

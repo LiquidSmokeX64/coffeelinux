@@ -3,7 +3,7 @@
 Key Features: Arch-Based, BTRFS installation, Hybridized Desktop Environment/s, Pipewire, VAAPI on Chrome (with game streaming in mind), FirewallD, and SystemD-Boot.
 
 A script designed to install a unique Coffee-Linux Experience via Arch easily, and semi painlessly.
-
+(vaapi chrome-flags.conf and premade Stadia app are located in /opt folder. place chrome-flags.conf in ~/.config/ folder, and the stadia app file in ~/.local/share/applications/ folder. and reboot after launching chrome and it fails once. Enjoy.)
 This Installer will create an Coffee-Linux install.
 
 Features: 
@@ -14,7 +14,7 @@ Features:
 6. Chrome Preinstalled via AUR (not Firefox)
 8. Latest Pipewire & Wireplumber for the best possible sound.
 9. Many gaming frameworks preinstalled so you can get to it right away.
-10. Prebuilt with Steam, Lutris, Wine, Winetricks, Protontricks, and DXVK for the best possible gaming experiences out of the box.
+10. Prebuilt with Steam, Wine, Winetricks, Protontricks, and DXVK for the best possible gaming experiences out of the box.
 11. SystemD boot (as opposed to GRUB).
 12. Yay for CLI installation of AUR applications.
 13. FirewallD (Better configuration than the standard one)
@@ -39,7 +39,7 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 
 7: Follow the prompts as needed. (mostly just password prompts and confirmation/overwrite dialogues lol)
 
-That should finish it off for you. Enjoy you Coffee-Linux.
+That should finish it off for you. Enjoy your Coffee. Spread the word! Coffee is hot over here.
 
 Hashtags:
 #GamingOnLinux #ArchGaming #SteamLinux #ArchInstaller #CoffeeLinux

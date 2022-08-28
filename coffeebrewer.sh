@@ -19,8 +19,9 @@ cp --dereference /etc/resolv.conf /mnt/etc/ &&
 arch-chroot /mnt pacman -Syy &&
 echo 'Installing Drivers and dependencies.' && 
 #read -n 1 -s -r -p "Press any key to continue" && 
-arch-chroot /mnt pacman -Sy power-profiles-daemon cpupower go meson xorg xorg-server xorg-apps virtualbox-guest-utils xf86-video-vmware nvidia-open git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src steam wine-mono wine-gecko lib32-opencl-nvidia zenity discord steam polkit-gnome gnome-keyring gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell virtualbox && 
+arch-chroot /mnt pacman -Sy power-profiles-daemon cpupower go meson xorg xorg-server xorg-apps virtualbox-guest-utils xf86-video-vmware nvidia-open git xdg-utils gettext ufw libva-utils libva-vdpau-driver neofetch wine winetricks lib32-vkd3d vkd3d innoextract giflib lib32-giflib libpng lib32-libpng libldap lib32-libldap gnutls lib32-gnutls mpg123 lib32-mpg123 openal lib32-openal v4l-utils lib32-v4l-utils libpulse lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib libjpeg-turbo lib32-libjpeg-turbo libxcomposite lib32-libxcomposite libxinerama lib32-libxinerama ncurses lib32-ncurses opencl-icd-loader lib32-opencl-icd-loader libxslt lib32-libxslt libva lib32-libva gst-plugins-base-libs lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader cups samba dosbox jre-openjdk-headless jre-openjdk jdk-openjdk openjdk-doc openjdk-src steam wine-mono wine-gecko lib32-opencl-nvidia zenity discord polkit-gnome gnome-keyring gst-plugin-pipewire lib32-pipewire lib32-pipewire-jack pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber firewalld shotwell virtualbox && 
 arch-chroot /mnt archlinux-java set java-18-openjdk
+
 }
 function fixthehomedir(){
 echo 'Attempting to fix the home directory automatically now...' && 
@@ -28,34 +29,20 @@ echo 'Attempting to fix the home directory automatically now...' &&
 arch-chroot /mnt pacman -Sy --noconfirm xdg-user-dirs &&
 arch-chroot /mnt xdg-user-dirs-update
 }
+
 function fixthedm(){
 echo 'Ensuring correct DM is set.' && 
-#read -n 1 -s -r -p "Press any key to continue" && 
-arch-chroot /mnt pacman -S lightdm lightdm-gtk-greeter && 
-#arch-chroot /mnt pacman -Sy  && 
+arch-chroot /mnt pacman -S lightdm lightdm-gtk-greeter &&  
 arch-chroot /mnt pacman -Syu && 
-#arch-chroot /mnt systemctl disable --now gdm && 
-#arch-chroot /mnt systemctl enable lightdm &&
-arch-chroot /mnt systemctl preset-all && 
-arch-chroot /mnt systemctl disable systemd-resolved && 
-arch-chroot /mnt systemctl disable systemd-networkd && 
-systemctl enable dhcpcd && 
-systemctl enable NetworkManager && 
-systemctl --global enable pipewire.service pipewire-pulse.service wireplumber.service && 
-systemctl enable firewalld
-#arch-chroot /mnt powerprofilesctl set performance
-#arch-chroot /mnt systemctl enable openbox &&  
+arch-chroot /mnt systemctl enable lightdm
 }
 
 function cleanupafter(){
 #Phase 5
 echo 'Cleaning up' &&
-cp arch-linux-installer/mintinstaller-cinnamon.sh /mnt/opt/ &&
-mkdir /mnt/VAAPI-Chrome && 
-cp arch-linux-installer/chrome-flags.conf /mnt/VAAPI-Chrome/chrome-flags.conf && 
-chmod a+x /mnt/VAAPI-Chrome/chrome-flags.conf && 
-cp arch-linux-installer/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/VAAPI-Chrome/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop &&  
-chmod a+x /mnt/VAAPI-Chrome/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop &&
+cp arch-linux-installer/coffeebrewer.sh /mnt/opt/ &&
+cp arch-linux-installer/chrome-flags.conf /mnt/opt/ && 
+cp arch-linux-installer/chrome-pnkcfpnngfokcnnijgkllghjlhkailce-Default.desktop /mnt/opt/ && 
 umount -R /mnt &&
 echo "Installation Complete, Please Reboot to use your OS." && 
 read -n 1 -s -r -p "Press any key to continue" && 
@@ -133,12 +120,10 @@ echo 'Installing Kernel Frameworks' &&
 pacman -Syy && 
 pacman -Sy --noconfirm archlinux-keyring && 
 pacstrap /mnt base linux linux-firmware linux-headers btrfs-progs net-tools networkmanager dhcpcd iwd man-pages man-db texinfo && 
-#echo 'Installing Gnome' && 
-#pacstrap /mnt sudo nano gnome-menus polkit-gnome gnome gdm gtk4 gnome-text-editor qt6 gnome-extra dkms gnome-terminal gedit gnome-system-monitor gnome-keyring && 
-echo 'Installing Cinnamon' && 
+echo 'Installing Cinnamon/Gnome' && 
 setlocale && 
 #read -n 1 -s -r -p "Press any key to continue" &&
-arch-chroot /mnt pacman -Sy git base-devel intel-ucode cinnamon lightdm lightdm-gtk-greeter gnome-terminal gnome-disk-utility gnome-calculator cinnamon-translations gnome-system-monitor xed xreader vlc gnome-keyring cinnamon-translations archlinux-wallpaper udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad sudo nano && 
+arch-chroot /mnt pacman -Sy git gnome-menus polkit-gnome gnome gdm gtk4 qt6 gnome-extra dkms gnome-keyring base-devel intel-ucode cinnamon lightdm lightdm-gtk-greeter gnome-terminal gnome-disk-utility gnome-calculator cinnamon-translations gnome-system-monitor xed xreader vlc gnome-keyring cinnamon-translations archlinux-wallpaper udev dbus gstreamer systemd ntp gst-libav gst-plugins-base gst-plugins-good gst-plugins-ugly gst-plugins-bad sudo nano && 
 echo 'Creating Links' && 
 #read -n 1 -s -r -p "Press any key to continue" && 
 genfstab -U /mnt >> /mnt/etc/fstab &&

@@ -76,6 +76,7 @@ Instructions are as follows: For most things you just answer yes to if asked as 
 Alternate Method
 
 ==================================================
+
 1a:  Boot an official Arch Linux ISO in UEFI mode.
 
 2a: Enter: pacman -Syy
